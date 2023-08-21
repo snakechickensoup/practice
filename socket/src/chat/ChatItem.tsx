@@ -1,7 +1,7 @@
-const ChatItem = () => {
+const ChatItem = ({ message }: { message: string }) => {
   return (
     <div>
-      <div>asdf</div>
+      <div>{message}</div>
     </div>
   );
 };
