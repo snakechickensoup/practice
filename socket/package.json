@@ -13,6 +13,7 @@
     "@stomp/stompjs": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0",
     "sockjs": "^0.3.24",
     "sockjs-client": "^1.6.1"
   },
