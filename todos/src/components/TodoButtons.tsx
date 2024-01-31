@@ -1,7 +1,14 @@
-const TodoButtons = () => {
+import NewTodo from './NewTodo';
+
+interface Props {
+  addTodo: (value: string) => void;
+}
+
+const TodoButtons = (props: Props) => {
+  const { addTodo } = props;
   return (
     <div className='todo-buttons'>
-      <button type='button'>add new</button>
+      <NewTodo addTodo={addTodo} />
       <div>
         <button type='button'>Redo</button>
         <button type='button'>Undo</button>

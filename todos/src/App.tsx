@@ -11,10 +11,16 @@ const dummyItems = [
 
 function App() {
   const [items, setItems] = useState<TodoItem[]>(dummyItems);
+
+  const addTodo = (value: string) => {
+    const newTodo = { id: Date.now(), title: value };
+    setItems((prev) => [...prev, newTodo]);
+  };
+
   return (
     <>
-      <TodoList todos={items}></TodoList>
-      <TodoButtons />
+      <TodoList todos={items} />
+      <TodoButtons addTodo={addTodo} />
     </>
   );
 }
