@@ -27,6 +27,7 @@ const TodoItem = (props: Props) => {
               handleEdit();
             }}>
             <input
+              id='edit-todo-input'
               type='text'
               onChange={(e) => setTitleValue(e.target.value)}
               value={titleValue}></input>

@@ -19,6 +19,7 @@ const NewTodo = () => {
         <>
           <form onSubmit={handleSubmit}>
             <input
+              id='new-todo-input'
               type='text'
               onChange={(e) => setValue(e.target.value)}
               value={value}
