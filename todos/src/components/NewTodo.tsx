@@ -1,11 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { TodosContext } from '../store';
 
-interface Props {
-  addTodo: (value: string) => void;
-}
+const NewTodo = () => {
+  const { addTodo } = useContext(TodosContext);
 
-const NewTodo = (props: Props) => {
-  const { addTodo } = props;
   const [value, setValue] = useState<string>('');
   const [edit, setEdit] = useState<boolean>(false);
 

@@ -1,15 +1,12 @@
-import { TodoItem as TodoType } from '../types';
+import { useContext } from 'react';
 import TodoItem from './TodoItem';
+import { TodosContext } from '../store';
 
-interface Props {
-  todos: TodoType[];
-}
-
-const TodoList = (props: Props) => {
-  const { todos } = props;
+const TodoList = () => {
+  const { items } = useContext(TodosContext);
   return (
     <ul>
-      {todos.map((todo) => (
+      {items.map((todo) => (
         <TodoItem {...todo} key={todo.id} />
       ))}
     </ul>
