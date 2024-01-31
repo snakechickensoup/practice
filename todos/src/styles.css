@@ -2,3 +2,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+.todo-list {
+  padding: 0;
+  width: 360px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+}
