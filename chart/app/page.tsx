@@ -1,17 +1,19 @@
-import LinePlot from "@/components/LinePlot";
+"use client";
+import BarChart from "@/components/charts/BarChart";
+import { letterFrequency } from "@visx/mock-data";
+import { ParentSize } from "@visx/responsive";
 import React from "react";
 
-const Home = () => {
-  const data = [30, 40, 70, 100, 30];
+const data = letterFrequency.slice(5);
 
+const Home = () => {
   return (
-    <div className="flex flex-col ">
-      <LinePlot
-        data={data}
-        width={640}
-        height={400}
-        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-      />
+    <div className="w-56 h-56">
+      <ParentSize>
+        {({ width, height }) => (
+          <BarChart data={data} width={width} height={height} />
+        )}
+      </ParentSize>
     </div>
   );
 };
