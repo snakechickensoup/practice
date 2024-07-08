@@ -73,3 +73,13 @@ button:focus-visible {
 .tag-item {
 	list-style: none;
 }
+
+.switch-area {
+	border: 1px solid #000;
+	padding: 2em;
+	border-radius: 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2em;
+}
