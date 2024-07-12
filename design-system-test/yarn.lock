@@ -8973,10 +8973,10 @@ slash@^4.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-4.0.0.tgz#2422372176c4c6c5addb5e2ada885af984b396a7"
   integrity sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==
 
-snow-white-ui@^0.0.39:
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/snow-white-ui/-/snow-white-ui-0.0.39.tgz#4c58e1d6d08d7b7972829ad03579ff40978f28e7"
-  integrity sha512-0kpAsZjHCkDgmnaz2sDVoUprYDaCDVSCwk/j0mSOXotns1eyRqu+nlPO35oeIyByxIfJzeueb39trX9etaQiQQ==
+snow-white-ui@^0.0.43:
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/snow-white-ui/-/snow-white-ui-0.0.43.tgz#d8e38f3793714f1793bdd3d1bd1a3be00a13875b"
+  integrity sha512-k5pUJfii8rKmqIev3D9paCMVmDvLS9O9sHOLcnZfjtfabkj0tWSBIVk9K1NmuXY6Ed90mDp5Ecf9TENdYC3SwQ==
   dependencies:
     "@testing-library/jest-dom" "^5.17.0"
     "@testing-library/react" "^13.4.0"

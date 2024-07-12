@@ -8,7 +8,7 @@ const SwitchComponent = () => {
 	return (
 		<article>
 			<h2>Switch Component</h2>
-			<div className='switch-area'>
+			<div className='area'>
 				<Switch size='sm' checked={checked} onChange={handleCheck} />
 				<Switch size='md' checked={checked} onChange={handleCheck} />
 				<Switch size='lg' checked={checked} onChange={handleCheck} />

@@ -5,3 +5,5 @@ export const tagList = [
 	{ id: 'typeScript', label: 'TypeScript', color: 'skyblue' },
 	{ id: 'react', label: 'React', color: 'yellow' }
 ] as const;
+
+export const positions = ['top', 'left', 'bottom', 'top'] as const;

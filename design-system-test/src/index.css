@@ -62,24 +62,16 @@ button:focus-visible {
 	}
 }
 
-.tag-list {
-	display: flex;
-	gap: 1em;
-	border: 1px solid #000;
-	padding: 2em;
-	border-radius: 1em;
-}
-
 .tag-item {
 	list-style: none;
 }
 
-.switch-area {
+.area {
 	border: 1px solid #000;
 	padding: 2em;
 	border-radius: 1em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 2em;
+	gap: 1.5em;
 }

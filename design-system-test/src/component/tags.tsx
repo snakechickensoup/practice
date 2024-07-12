@@ -14,7 +14,7 @@ const Tags = () => {
 	return (
 		<article>
 			<h2>Tag Component</h2>
-			<ul className='tag-list'>
+			<ul className='area'>
 				{tags.map((tag) => (
 					<li key={tag.id} className='tag-item'>
 						{/* style props 추가하기 */}
