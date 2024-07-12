@@ -1,19 +1,26 @@
-import { Form } from 'react-router-dom';
+import { Form, useLoaderData } from 'react-router-dom';
+import { getContact } from '../contact';
+
+export async function loader({ params }) {
+  const contact = await getContact(params.contactId);
+  return { contact };
+}
 
 export default function Contact() {
-  const contact = {
-    first: 'Your',
-    last: 'Name',
-    avatar: 'https://placekitten.com/g/200/200',
-    twitter: 'your_handle',
-    notes: 'Some notes',
-    favorite: true,
-  };
+  const { contact } = useLoaderData();
 
   return (
     <div id='contact'>
       <div>
-        <img key={contact.avatar} src={contact.avatar || null} />
+        <img
+          key={contact.avatar}
+          src={
+            contact.avatar ||
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            `https://robohash.org/${contact.id}.png?size=200x200`
+          }
+        />
       </div>
 
       <div>
@@ -24,7 +31,7 @@ export default function Contact() {
             </>
           ) : (
             <i>No Name</i>
-          )}{' '}
+          )}
           <Favorite contact={contact} />
         </h1>
 
@@ -58,9 +65,9 @@ export default function Contact() {
   );
 }
 
-function Favorite({ contact }) {
-  // yes, this is a `let` for later
-  let favorite = contact.favorite;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function Favorite({ contact }: { contact: any }) {
+  const favorite = contact.favorite;
   return (
     <Form method='post'>
       <button
