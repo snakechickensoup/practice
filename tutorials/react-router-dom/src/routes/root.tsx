@@ -3,7 +3,14 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 
-import { Link, Outlet, useLoaderData, Form } from 'react-router-dom';
+import {
+  Outlet,
+  useLoaderData,
+  Form,
+  redirect,
+  NavLink,
+  useNavigation
+} from 'react-router-dom';
 import { createContact, getContacts } from '../contact';
 
 export async function loader() {
@@ -13,11 +20,15 @@ export async function loader() {
 
 export async function action() {
   const contact = await createContact();
-  return { contact };
+  return redirect(`contacts/${contact.id}/edit`);
 }
 
 export default function Root() {
   const { contacts }: any = useLoaderData();
+
+  // useNavigation returns the current navigation state:
+  // it can be one of "idle" | "submitting" | "loading".
+  const navigation = useNavigation();
   return (
     <>
       <div id='sidebar'>
@@ -43,7 +54,12 @@ export default function Root() {
             <ul>
               {contacts.map((contact: any) => (
                 <li key={contact.id}>
-                  <Link to={`contacts/${contact.id}`}>
+                  {/* NavLink는 사용자가 현재 어떤 페이지에 있는지에 따라 스타일이나 클래스를 동적으로 적용할 수 있는 기능을 제공 */}
+                  <NavLink
+                    to={`contacts/${contact.id}`}
+                    className={({ isActive, isPending }) =>
+                      isActive ? 'active' : isPending ? 'pending' : ''
+                    }>
                     {contact.first || contact.last ? (
                       <>
                         {contact.first} {contact.last}
@@ -52,7 +68,7 @@ export default function Root() {
                       <i>No Name</i>
                     )}
                     {contact.favorite && <span>★</span>}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -63,7 +79,9 @@ export default function Root() {
           )}
         </nav>
       </div>
-      <div id='detail'>
+      <div
+        id='detail'
+        className={navigation.state === 'loading' ? 'loading' : ''}>
         <Outlet />
       </div>
     </>
