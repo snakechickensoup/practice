@@ -61,7 +61,10 @@ export default function Root() {
               type='search' // ?search=
               name='q' // ?q=
               defaultValue={q} // 새로고침해도 값이 남아있
-              onChange={(e) => submit(e.currentTarget.form)}
+              onChange={(e) => {
+                const isFirstSearch = q == null;
+                submit(e.currentTarget.form, { replace: !isFirstSearch });
+              }}
               className={searching ? 'loading' : ''}
             />
             <div id='search-spinner' aria-hidden hidden={!searching} />
