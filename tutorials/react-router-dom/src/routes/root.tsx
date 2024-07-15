@@ -9,13 +9,17 @@ import {
   Form,
   redirect,
   NavLink,
-  useNavigation
+  useNavigation,
+  useSubmit
 } from 'react-router-dom';
-import { createContact, getContacts } from '../contact';
+import { createContact, getContacts } from '../Contact';
+import { useEffect } from 'react';
 
-export async function loader() {
-  const contacts = await getContacts();
-  return { contacts };
+export async function loader({ request }) {
+  const url = new URL(request.url);
+  const q = url.searchParams.get('q');
+  const contacts = await getContacts(q);
+  return { contacts, q };
 }
 
 export async function action() {
@@ -24,27 +28,45 @@ export async function action() {
 }
 
 export default function Root() {
-  const { contacts }: any = useLoaderData();
+  const { contacts, q }: any = useLoaderData();
 
   // useNavigation returns the current navigation state:
   // it can be one of "idle" | "submitting" | "loading".
   const navigation = useNavigation();
+  const submit = useSubmit();
+
+  useEffect(() => {
+    const element = document.getElementById('q') as HTMLFormElement;
+    element.value = q;
+  }, [q]);
+
+  const searching =
+    navigation.location &&
+    new URLSearchParams(navigation.location.search).has('q');
+
   return (
     <>
       <div id='sidebar'>
         <h1>React Router Contacts</h1>
         <div>
-          <form id='search-form' role='search'>
+          <Form id='search-form' role='search'>
+            {/**  GET
+             *  POST가 아닌 GET이기 때문에 action 호출 x
+             */}
+
             <input
               id='q'
               aria-label='Search contacts'
               placeholder='Search'
-              type='search'
-              name='q'
+              type='search' // ?search=
+              name='q' // ?q=
+              defaultValue={q} // 새로고침해도 값이 남아있
+              onChange={(e) => submit(e.currentTarget.form)}
+              className={searching ? 'loading' : ''}
             />
-            <div id='search-spinner' aria-hidden hidden={true} />
+            <div id='search-spinner' aria-hidden hidden={!searching} />
             <div className='sr-only' aria-live='polite'></div>
-          </form>
+          </Form>
           <Form method='post'>
             <button type='submit'>New</button>
           </Form>
