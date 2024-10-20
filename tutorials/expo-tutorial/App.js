@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Platform } from 'react-native';
 import { useState, useRef } from 'react';
 import { captureRef } from 'react-native-view-shot';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from 'expo-image-picker';
+import domtoimage from 'dom-to-image';
 
 import Button from './components/Button';
 import ImageViewer from './components/ImageViewer';
@@ -51,18 +52,35 @@ export default function App() {
   };
 
   const onSaveImageAsync = async () => {
-    try {
-      const localUri = await captureRef(imageRef, {
-        height: 400,
-        quality: 1
-      });
+    if (Platform.OS !== 'web') {
+      try {
+        const localUri = await captureRef(imageRef, {
+          height: 400,
+          quality: 1
+        });
 
-      await MediaLibrary.saveToLibraryAsync(localUri);
-      if (localUri) {
-        alert('저장되었습니다.');
+        await MediaLibrary.saveToLibraryAsync(localUri);
+        if (localUri) {
+          alert('저장되었습니다.');
+        }
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
+    } else {
+      try {
+        const dataUrl = await domtoimage.toJpeg(imageRef.current, {
+          quality: 0.96,
+          width: 320,
+          height: 400
+        });
+
+        let link = document.createElement('a');
+        link.download = `${new Date().getTime()}.jpeg`;
+        link.href = dataUrl;
+        link.click();
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 

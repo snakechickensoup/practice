@@ -34,3 +34,16 @@ if (status === null) {
 - captureRef() -> \<View\>의 스크린 샷 이미지 URI 반환
 
 #### 4. 스크린샷 캡쳐하고 저장
+
+---
+
+## [8.Handle platform differences](https://docs.expo.dev/tutorial/platform-differences/)
+
+웹 브라우저에서 스크린샷 캡쳐하기
+
+#### 1. 라이브러리 설치
+
+- dom-to-image: 웹 스크린 샷 캡쳐
+  DOM 노드의 스크린샷을 찍어 벡터 이미지나 래스터 이미지로 변환
+
+#### 2. 플랫폼 별 코드 추가
