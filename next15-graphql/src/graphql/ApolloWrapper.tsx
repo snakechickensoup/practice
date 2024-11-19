@@ -9,7 +9,7 @@ import {
 
 function makeClient() {
   const httpLink = new HttpLink({
-    uri: "https://spacex-production.up.railway.app/",
+    uri: "https://rickandmortyapi.com/graphql",
   });
 
   return new ApolloClient({
