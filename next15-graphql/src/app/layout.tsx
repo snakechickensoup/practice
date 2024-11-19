@@ -13,8 +13,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <ApolloWrapper>{children}</ApolloWrapper>
+      <body className="bg-amber-200">
+        <ApolloWrapper>
+          <header className="text-4xl text-center mt-8 font-extrabold ">
+            Rick and Morty
+          </header>
+          {children}
+        </ApolloWrapper>
       </body>
     </html>
   );
