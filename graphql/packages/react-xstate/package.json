@@ -1,0 +1,36 @@
+{
+  "name": "react-xstate",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql"
+  },
+  "dependencies": {
+    "graphql": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-relay": "^18.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/node": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "@vitejs/plugin-react": "^4.3.3",
+    "babel-plugin-relay": "^18.1.0",
+    "eslint": "*",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "relay-compiler": "^18.1.0",
+    "relay-config": "^12.0.1",
+    "typescript": "*",
+    "typescript-eslint": "^8.11.0",
+    "vite": "^5.4.10"
+  }
+}
