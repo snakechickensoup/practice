@@ -1,0 +1,21 @@
+{
+  "name": "@todo2/server",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "better-sqlite3": "^11.5.0",
+    "graphql": "^16.9.0",
+    "graphql-yoga": "^5.10.3",
+    "hono": "^4.6.11",
+    "vitest": "^2.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "tsx": "^4.7.1"
+  },
+  "packageManager": "yarn@4.5.2"
+}
